@@ -5,9 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { library } from '@fortawesome/fontawesome-svg-core';
 //Importing the whole library of the font awesome svg files
-import { faBars, faShoppingCart, faTimes, faBookOpen, faTag, faBolt, faStar, faStarHalfStroke  } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faShoppingCart, faTimes, faBookOpen, faTag, faBolt, faStar, faStarHalfStroke, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 //importing individual icons from the library of icons
-library.add(faBars, faShoppingCart, faTimes,faBookOpen, faTag, faBolt, faStar, faStarHalfStroke )
+library.add(faBars, faShoppingCart, faTimes,faBookOpen, faTag, faBolt, faStar, faStarHalfStroke, faArrowLeft )
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
