@@ -1,33 +1,40 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const Book = () => {
+
+const Book = ({ book }) => {
   return (
     <div className="book">
     <a href="">
       <figure className="book__img--wrapper">
         <img
-          src="https://covers.openlibrary.org/b/id/8091016-L.jpg"
+          src={book.url}
           alt=""
         />
       </figure>
     </a>
     <div className="book__title">
-      <a className="book__title--link">Atomic Habits</a>
+      <a className="book__title--link">{book.title}</a>
     </div>
     <div className="book__ratings">
-      <FontAwesomeIcon icon="star" />
-      <FontAwesomeIcon icon="star" />
-      <FontAwesomeIcon icon="star" />
-      <FontAwesomeIcon icon="star" />
-      <FontAwesomeIcon icon="star-half-stroke" />
+    {
+        new Array(Math.floor(book.rating)).fill(0).map((_, index) => <FontAwesomeIcon icon="star" key={index}/>)
+    }
+    {/* an array thats the length of the book rating, then mapping it to the star icons */}
+    {
+      !Number.isInteger(book.rating) && <FontAwesomeIcon icon="star-half-stroke"/>
+    }
+    {/* For half stars (non integers)*/}
     </div>
     <div className="book__price">
-      <span className="book__price--normal">$15.00</span>
-      $10.00
+       {book.salePrice ?
+       (<><span className="book__price--normal">${book.originalPrice.toFixed(2)}</span>
+                {book.salePrice.toFixed(2)}</>)
+          : (<>${book.originalPrice.toFixed(2)}</>)      
+       }
     </div>
   </div>
-  )
-}
+  );
+};
 
 export default Book
