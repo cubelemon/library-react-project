@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React from "react";
 import { Link, useParams } from "react-router-dom";
 import Rating from "../components/UI/Rating";
 import BookPrice from "../components/UI/BookPrice";
@@ -17,6 +17,8 @@ const BookInfo = ({ books, addToCart, cart }) => {
   function bookExistOnCart() {
     return cart.find(book => +book.id === +id);
   }
+  //react cant read this??
+
   return (
     <div id="books__body">
       <main id="books__main">

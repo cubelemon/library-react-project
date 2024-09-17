@@ -21,7 +21,7 @@ function App() {
 
 
     
-      setCart (...cart, book)
+      setCart (...oldCart, book)
     
                   //   THIS IS FOR WHEN YOU WANT TO ADD MULTIPLE OF THE SAME BOOK TO CART IN THE BOOK INFO PAGE
                   //const dupeItem = cart.find((item) => +item.id === +book.id);
@@ -65,7 +65,7 @@ function App() {
         <Nav />
         <Route path="/" exact component={Home} />
         <Route path="/books" exact render={() => <Books books={books} />} />
-        <Route path="/books/:id" render={() => <BookInfo books={books} addToCart = {addToCart}/>} />
+        <Route path="/books/:id" render={() => <BookInfo books={books} addToCart = {addToCart} cart={cart}/>} /> 
         <Route path="/cart" render={() => <Cart books={books} />} />
         <Footer />
       </Router>
