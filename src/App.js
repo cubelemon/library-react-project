@@ -21,7 +21,7 @@ function App() {
 
 
     
-      setCart (...oldCart, book)
+      setCart((oldCart) => [...oldCart, book]);
     
                   //   THIS IS FOR WHEN YOU WANT TO ADD MULTIPLE OF THE SAME BOOK TO CART IN THE BOOK INFO PAGE
                   //const dupeItem = cart.find((item) => +item.id === +book.id);
