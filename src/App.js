@@ -21,7 +21,7 @@ function App() {
 
 
     
-      setCart((oldCart) => [...oldCart, book]);
+      setCart((oldCart) => [...oldCart, {...book, quantity: 1}]);
     
                   //   THIS IS FOR WHEN YOU WANT TO ADD MULTIPLE OF THE SAME BOOK TO CART IN THE BOOK INFO PAGE
                   //const dupeItem = cart.find((item) => +item.id === +book.id);
@@ -50,6 +50,24 @@ function App() {
                   // }
 }
 
+function changeQuantity(book, quantity) {
+  setCart(cart.map(item => {
+    if (item.id === book.id) {
+      return {
+        ...item,
+        quantity: +quantity,
+      }
+    }
+    else {
+      return item
+    }
+  }))
+}
+
+function removeItem(item) {
+  setCart(cart.filter(book => book.id !== item.id))
+}
+
   useEffect(
     () =>{
       console.log(cart)
@@ -65,7 +83,7 @@ function App() {
         <Nav />
         <Route path="/" exact component={Home} />
         <Route path="/books" exact render={() => <Books books={books} />} />
-        <Route path="/books/:id" render={() => <BookInfo books={books} addToCart = {addToCart} cart={cart}/>} /> 
+        <Route path="/books/:id" render={() => <BookInfo books={books} addToCart = {addToCart} cart={cart} changeQuantity={changeQuantity}/>} /> 
         <Route path="/cart" render={() => <Cart books={books} cart={cart}/>} />
         <Footer />
       </Router>
