@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cart = () => {
+const Cart = ( {cart} ) => {
   return (
     <div id="books__body">
       <main id="books__main">
@@ -16,21 +16,22 @@ const Cart = () => {
                 <div className="cart__total">Price</div>
               </div>
               <div className="cart__body">
-                <div className="cart__item">
-                  <div className="cart__book">
-                    <img
-                      src="https://covers.openlibrary.org/b/id/8091016-L.jpg"
-                      alt=""
-                      className="cart__book--img"
-                    />
-                    <div className="cart__book--info">
-                      <span className="cart__book--title">
-                        Crack the coding interview
-                      </span>
-                      <span className="cart__book--price">$10.00</span>
-                      <button className="cart__book--remove">Remove</button>
+                {cart.map((book) => {
+                  return<div className="cart__item">
+                    <div className="cart__book">
+                      <img
+                        src="https://covers.openlibrary.org/b/id/8091016-L.jpg"
+                        alt=""
+                        className="cart__book--img"
+                      />
+                      <div className="cart__book--info">
+                        <span className="cart__book--title">
+                          Crack the coding interview
+                        </span>
+                        <span className="cart__book--price">$10.00</span>
+                        <button className="cart__book--remove">Remove</button>
+                      </div>
                     </div>
-                  </div>
                     <div className="cart__quantity">
                       <input
                         type="number"
@@ -39,31 +40,33 @@ const Cart = () => {
                         className="cart__input"
                       />
                     </div>
-                    <div className="cart__total">
-                        $10.00
-                    </div>
-                </div>
+                    <div className="cart__total">$10.00</div>
+                  </div>;
+                })}
               </div>
             </div>
             <div className="total">
-                <div className="total__item total__sub-total">
-                    <span>Subtotal</span>
-                    <span>$9.00</span>
-                </div>
-                <div className="total__item total__sub-tax">
-                    <span>Tax</span>
-                    <span>$1.00</span>
-                </div>
-                <div className="total__item total__sub-price">
-                    <span>Price</span>
-                    <span>$10.00</span>
-                </div>
-                <button className="btn btn__checkout no-cursor" onClick={ () => alert(`Haven't gotten around to doing this :(`)}>
-                    Proceed to checkout
-                </button>
+              <div className="total__item total__sub-total">
+                <span>Subtotal</span>
+                <span>$9.00</span>
+              </div>
+              <div className="total__item total__sub-tax">
+                <span>Tax</span>
+                <span>$1.00</span>
+              </div>
+              <div className="total__item total__sub-price">
+                <span>Price</span>
+                <span>$10.00</span>
+              </div>
+              <button
+                className="btn btn__checkout no-cursor"
+                onClick={() => alert(`Haven't gotten around to doing this :(`)}
+              >
+                Proceed to checkout
+              </button>
             </div>
           </div>
-        </div> 
+        </div>
       </main>
     </div>
   );
