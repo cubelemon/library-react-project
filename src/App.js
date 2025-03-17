@@ -18,6 +18,10 @@ function App() {
 
   // FUNCTION WHERE YOU CAN ONLY ADD ONE FROM THE BOOK INFO PAGE 
   function addToCart(book) {
+// how this works: 
+//... is a spread opperator, it puts in the existing info of what you have spread.
+//this resets the cart by adding a new property in the array -- the object -- book ({...book})
+// not only that, it also adds the quantity of 1 into the book object {...book, quantity: 1}
 
 
     
@@ -34,7 +38,7 @@ function App() {
                   //       {
                   //         if(item.id === dupeItem.id) {
                   //           return {
-                  //             ...item, 
+                  //             ...item, Y
                   //             quantity: item.quantity + 1,
                   //           };//if there's a same item in cart and you're adding another one
                   //         }
@@ -51,22 +55,25 @@ function App() {
 }
 
 function changeQuantity(book, quantity) {
-  setCart(cart.map(item => {
-    if (item.id === book.id) {
-      return {
+  setCart(cart.map(item => 
+     item.id === book.id
+    ? {
         ...item,
         quantity: +quantity,
       }
-    }
-    else {
-      return item
-    }
-  }))
+    :
+    item
+    )
+);
 }
 
 function removeItem(item) {
   setCart(cart.filter(book => book.id !== item.id))
 }
+//this basically resets the cart so that it filters out the removed item by only showing items that are not item.id
+
+
+
 
   useEffect(
     () =>{
@@ -83,8 +90,8 @@ function removeItem(item) {
         <Nav />
         <Route path="/" exact component={Home} />
         <Route path="/books" exact render={() => <Books books={books} />} />
-        <Route path="/books/:id" render={() => <BookInfo books={books} addToCart = {addToCart} cart={cart} changeQuantity={changeQuantity}/>} /> 
-        <Route path="/cart" render={() => <Cart removeItem={removeItem} books={books} cart={cart}/>} />
+        <Route path="/books/:id" render={() => <BookInfo books={books} addToCart = {addToCart} cart={cart} />} /> 
+        <Route path="/cart" render={() => <Cart removeItem={removeItem} books={books} cart={cart} changeQuantity={changeQuantity}/>} />
         <Footer />
       </Router>
     </div>
