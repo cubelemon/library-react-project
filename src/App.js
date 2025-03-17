@@ -84,7 +84,7 @@ function removeItem(item) {
         <Route path="/" exact component={Home} />
         <Route path="/books" exact render={() => <Books books={books} />} />
         <Route path="/books/:id" render={() => <BookInfo books={books} addToCart = {addToCart} cart={cart} changeQuantity={changeQuantity}/>} /> 
-        <Route path="/cart" render={() => <Cart books={books} cart={cart}/>} />
+        <Route path="/cart" render={() => <Cart removeItem={removeItem} books={books} cart={cart}/>} />
         <Footer />
       </Router>
     </div>
