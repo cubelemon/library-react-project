@@ -73,7 +73,13 @@ function removeItem(item) {
 //this basically resets the cart so that it filters out the removed item by only showing items that are not item.id
 
 
-
+function numberOfItems() {
+  let counter = 0;
+  cart.forEach(item => {
+    counter += item.quantity
+  })
+  return counter;
+}
 
   useEffect(
     () =>{
@@ -87,7 +93,7 @@ function removeItem(item) {
   return (
     <div className="App">
       <Router>
-        <Nav />
+        <Nav numberOfItems={numberOfItems()}/>
         <Route path="/" exact component={Home} />
         <Route path="/books" exact render={() => <Books books={books} />} />
         <Route path="/books/:id" render={() => <BookInfo books={books} addToCart = {addToCart} cart={cart} />} /> 
