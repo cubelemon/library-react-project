@@ -72,10 +72,12 @@ const Cart = ( {cart, changeQuantity, removeItem}) => {
                 <span>Subtotal</span>
                 <span>${(total() * 0.9).toFixed(2)}</span>
               </div>
+
               <div className="total__item total__sub-tax">
                 <span>Tax</span>
                 <span>${(total() * 0.1).toFixed(2)}</span>
               </div>
+              
               <div className="total__item total__sub-price">
                 <span>Total</span>
                 <span>${total().toFixed(2)}</span>
