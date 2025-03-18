@@ -77,11 +77,12 @@ const Cart = ( {cart, changeQuantity, removeItem}) => {
                 <span>Tax</span>
                 <span>${(total() * 0.1).toFixed(2)}</span>
               </div>
-              
+
               <div className="total__item total__sub-price">
                 <span>Total</span>
                 <span>${total().toFixed(2)}</span>
               </div>
+              
               <button
                 className="btn btn__checkout no-cursor"
                 onClick={() => alert(`Haven't gotten around to doing this :(`)}
